@@ -2,3 +2,4 @@
 /docs
 /signal_data
 /sax
+*.npy
