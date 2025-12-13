@@ -30,7 +30,7 @@ Contrary to the assumption that larger datasets yield better models, we observed
 - **Small Scale (N=100):** The algorithm successfully clustered geological P-wave onsets.
 - **Large Scale (N=5000):** A **"Noise Trap"** emerged. Low-variance technical artifacts (e.g., 50Hz mains hum, sensor resonance) formed tighter mathematical clusters than the highly variable earthquake signals. The algorithm prioritized "perfect" noise matches over "imperfect" geological matches.
 
-![Noise Trap at N=5000 Vertical Channel](important_motifs\vertical_m50_5000.png)
+![Noise Trap at N=5000 Vertical Channel](important_motifs/vertical_m50_5000.png)
 
 ### 2. The Resolution Trade-off (Window Size)
 
@@ -43,11 +43,11 @@ The window size (m) acted as a filter for different physical properties:
 ### 3. Channel Polarization
 
 - **Vertical (Z):** Best for **Phase Picking**. Captures the sharpest P-wave impulses (compressional waves) at m=150. However, it is highly susceptible to resonance noise at scale.
-  ![Vertical Channel Motifs](important_motifs\vertical_m150_5000.png)
+  ![Vertical Channel Motifs](important_motifs/vertical_m150_5000.png)
 - **East (E):** Best for **Robust Detection**. The most stable channel at m=200, resisting the high-frequency noise that corrupted the Z-channel.
-  ![East Channel Motifs](important_motifs\east_m200_5000.png)
+  ![East Channel Motifs](important_motifs/east_m200_5000.png)
 - **North (N):** Unreliable for onsets. Dominated by horizontal **Love Waves**, obscuring the P-wave arrival. May be useful for sinusodial-like recurring patterns right on shockwave.
-  ![North Channel Motifs](important_motifs\north_m200_1000.png)
+  ![North Channel Motifs](important_motifs/north_m200_1000.png)
 
 ### 4. SAX Pattern Mining Findings
 
@@ -64,12 +64,12 @@ Using Piecewise Aggregate Approximation (PAA) followed by Symbolic Aggregate app
 Based on these findings, we propose a 3-stage hybrid detection system:
 
 1. **Triggering (Recall):** Scan **East and North Channel (m=200)** for the "Silence → Spike" motif.
-   ![Triggering Stage - East Channel m=200](important_motifs\east_m200_5000.png)
-   ![Triggering Stage - North Channel m=200](important_motifs\north_m200_1000.png)
+   ![Triggering Stage - East Channel m=200](important_motifs/east_m200_5000.png)
+   ![Triggering Stage - North Channel m=200](important_motifs/north_m200_1000.png)
 2. **Picking (Precision):** Refine arrival time using **Vertical Channel (m=150)** to capture the sharpest onset.
-   ![Picking Stage - Vertical Channel m=150](important_motifs\vertical_m150_5000.png)
+   ![Picking Stage - Vertical Channel m=150](important_motifs/vertical_m150_5000.png)
 3. **Quality Control:** Use the "Sawtooth" noise motif discovered at N=5000 as a negative class to automatically flag and discard sensor errors.
-   ![Quality Control - Noise Motifs](important_motifs\vertical_m50_5000.png)
+   ![Quality Control - Noise Motifs](important_motifs/vertical_m50_5000.png)
 
 ## 📂 Repository Structure
 
