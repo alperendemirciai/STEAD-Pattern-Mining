@@ -5,3 +5,4 @@
 *.npy
 /motif_results_vis3
 /experiments_auto_k
+/assets
