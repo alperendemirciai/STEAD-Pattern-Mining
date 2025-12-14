@@ -76,7 +76,6 @@ Based on these findings, we propose a 3-stage hybrid detection system:
 ```
 ├── metadata/                      # Processed metadata files
 ├── motif_results_stumpy/          # Stumpy motif results
-├── motif_results_vis3/            # Visualization results
 ├── sax/                           # SAX pattern mining related
 ├── signal_data/                   # Processed seismic data
 ├── stumpy/                        # Stumpy-related outputs
